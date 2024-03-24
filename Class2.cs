@@ -12,12 +12,12 @@ namespace Design
     {
             static async Task Main(string[] args)
             {
-                // Open the SQLite database connection
+                // path pour connection
                 string dbpath = " C:\\Users\\hp\\Desktop\\Nouveau dossier\\D.db";
                 SqliteConnection db = new SqliteConnection($"Filename={dbpath}");
                 db.Open();
 
-                // read points from the table
+                // selection donnees du table 
                 string sql = "SELECT Nom ,x, y FROM Lire";
                 SqliteCommand command = new SqliteCommand(sql, db);
 
@@ -28,10 +28,10 @@ namespace Design
                     string Nom = reader.GetString(0);
                     int x = reader.GetInt32(1);
                     int y = reader.GetInt32(2);
-
+                        //l'affichage
                     Console.WriteLine($"Nom_de_point {Nom} (X:{x}, Y:{y})");
                 }
-
+                     //Fermer connection 
                 db.Close();
             }
         }
